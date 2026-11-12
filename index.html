@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <h2>Online Examination System</h2>
+
+
+<input id="student" placeholder="Student Name">
+<button onclick="login()">Login</button>
+
+<div id="exam" style="display:none">
+<p>1. HTML stands for?</p>
+<input type="radio" name="q1" value="1"> Hyper Text Markup Language<br>
+<input type="radio" name="q1" value="0"> High Text Machine Language<br>
+
+<p>2. CSS is used for?</p>
+<input type="radio" name="q2" value="1"> Styling Web Pages<br>
+<input type="radio" name="q2" value="0"> Database Management<br><br>
+
+<button onclick="result()">Submit Exam</button>
+</div>
+
+<p id="output"></p>
+
+<script>
+function login() {
+let name = document.getElementById("student").value.trim();
+
+if (name === "") {
+document.getElementById("output").textContent =
+"Enter student name";
+return;
+}
+
+document.getElementById("exam").style.display = "block";
+document.getElementById("output").textContent =
+"Welcome " + name;
+}
+
+function result() {
+let score = 0;
+let q1 = document.querySelector('input[name="q1"]:checked');
+let q2 = document.querySelector('input[name="q2"]:checked');
+
+if (!q1 || !q2) {
+document.getElementById("output").textContent =
+"Answer all questions";
+return;
+}
+
+score = Number(q1.value) + Number(q2.value);
+document.getElementById("output").textContent =
+"Your Score: " + score + "/2";
+}
+</script>
+
+</body>
+</html>
